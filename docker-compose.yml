@@ -18,15 +18,16 @@ services:
             PHP_INI_UPLOAD_MAX_FILESIZE: 1g
             PHP_INI_XDEBUG__REMOTE_START: 1
             PHP_INI_XDEBUG__START_WITH_REQUEST: 'yes'
+            STARTUP_COMMAND_1: composer install
         ports:
             - "80:80"
 
     frontend:
         image: node:20
-        command: npm run dev -- --host
+        command: bash -c "npm install && npm run dev -- --host"
         volumes:
             - ./:/usr/src/app
         working_dir: /usr/src/app
         restart: unless-stopped
         ports:
-            - "8080:8080"
+            - "5173:5173"

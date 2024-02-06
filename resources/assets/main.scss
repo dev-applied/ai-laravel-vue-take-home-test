@@ -1,0 +1,73 @@
+@import "variables";
+
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+
+:root {
+  // Colors
+  --color-primary: #CE2B2B;
+  --color-secondary: #004680;
+  --color-background: #EAE7E7;
+  --color-inactive: #A6A6A6;
+  --color-tertiary: #8C8C8C;
+  --color-black: #181818;
+  --color-white: #FFFFFF;
+
+
+  --color-text: var(--color-tertiary);
+  --color-text-primary: var(--color-primary);
+  --color-text-secondary: var(--color-secondary);
+  --color-text-black: var(--color-black);
+  --color-text-white: var(--color-white);
+
+  --grid-breakpoints-xs: 0;
+  --grid-breakpoints-sm: 600px;
+  --grid-breakpoints-md: 1280px;
+  --grid-breakpoints-large: 1920px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Poppins, serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  padding: $grid-gutter / 2;
+  margin-right: auto;
+  margin-left: auto;
+  @include make-container-max-widths;
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  margin: -$grid-gutter / 2;
+
+  & + .row {
+    margin-top: $grid-gutter / 2;
+  }
+}
+
+@include make-grid-columns
+
+

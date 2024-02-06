@@ -13,15 +13,15 @@ Feel free to reach out to your recruiting contact with any questions or concerns
 
 ## Goal
 
-Modify the provided Laravel 10 and Vue 3 app to match [this figma]() as closely as possible while utilizing best-practices to improve the codebase and implement the functional requirements outlined below.
+Modify the provided Laravel 10 and Vue 3 app to match [this figma](https://www.figma.com/file/esJPcwZUGVjTq8D4svgAzC/Reference?type=design&node-id=0%3A1&mode=design&t=WHgnhnlnlIAKcAvl-1) as closely as possible while utilizing best-practices to improve the codebase and implement the functional requirements outlined below.
 
-- The provided exercise files are a starting point and they have room for improvement; feel free to modify
+- The provided exercise files are a starting point, and they have room for improvement; feel free to modify
 - Don't treat the mock as gospel -- This is a test to determine your code quality and ability to implement provided wires. We won't be counting pixels but are looking for a general likeness
 - In the exercise you are implementing a local API; however, you should code your submission as if you are using a production API
 
 
 ## Links
-- Figma Mock: https://google.com
+- Figma Mock: https://www.figma.com/file/esJPcwZUGVjTq8D4svgAzC/Reference?type=design&node-id=0%3A1&mode=design&t=WHgnhnlnlIAKcAvl-1
 
 ## Frontend Functional Requirements
 
@@ -114,7 +114,7 @@ In order to make this project work you will need to signup for a couple free ser
 This service will be utilized for address autocomplete. In the project we provide a composable function to use for creating the address autocomplete input. Use the following steps to get an API key
 - Signup for a free account [here](https://myprojects.geoapify.com/register)
 - Click the create project button 
-- Copy the API key and paste it into the `GEOAPIFY_API_KEY` value in the project `.env`
+- Copy the API key and paste it into the `VITE_GEOAPIFY_API_KEY` value in the project `.env`
 
 ### Datafiniti
 
