@@ -23,7 +23,6 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      // @ts-expect-error Modules are supported
       '@': fileURLToPath(new URL('./resources', import.meta.url))
     }
   },
@@ -31,8 +30,15 @@ export default defineConfig({
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
-        additionalData: ['@import "resources/assets/variables";', ''].join('\n')
+        additionalData: ['@use "/resources/assets/variables";', ''].join('\n')
       }
+    }
+  },
+  // Needed for Windows users
+  server: {
+    host: '0.0.0.0',
+    hmr: {
+      host: 'localhost'
     }
   }
 })

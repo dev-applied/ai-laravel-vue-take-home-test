@@ -3,7 +3,7 @@
   <router-view />
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import AppToolbar from '@/components/AppToolbar.vue'
 

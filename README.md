@@ -13,6 +13,27 @@ Feel free to reach out to your recruiting contact with any questions or concerns
 
 ## Goal
 
+The goal of this test is to simulate a real world work situation you may experience while working at Applied Imagination.
+For this test imagine you have just received this Github repository from a client. They state that they had previously
+hired another development firm and after months they were never able to deliver what the client requested.
+
+Below you will find the functional requirements provided to you by the business analysis who worked with the client. Your
+goal is to modify the provided Laravel 10 and Vue 3 app to meet the functional spec and resolve any bugs you might find
+along the way.
+
+Your lead dev has reviewed the work and allotted you 2 billable hours to complete this assignment. 
+
+*UPDATE*: Your project manager sends you a list of some of the specific bugs the client has reported.
+- The client reports the load time for the property list is too slow (You're lead dev recommends you add caching as the API is slow)
+- The client reports that when they search for a city or address the search results are not within 20 miles of the search address
+- The client reports when adding a property to their wishlist then refreshing the page and searching for the same property again the property is not marked as wishlisted
+- The client reported the property cards on the search page don't line up correctly
+- The client reported that on mobile the search input doesn't match the wires
+- The client reported that the distance from the searched address that should display on the property card is not displaying properly 
+
+
+## Functional Requirements
+
 Modify the provided Laravel 10 and Vue 3 app to match [this figma](https://www.figma.com/file/esJPcwZUGVjTq8D4svgAzC/Reference?type=design&node-id=0%3A1&mode=design&t=WHgnhnlnlIAKcAvl-1) as closely as possible while utilizing best-practices to improve the codebase and implement the functional requirements outlined below.
 
 - The provided exercise files are a starting point, and they have room for improvement; feel free to modify
@@ -20,51 +41,46 @@ Modify the provided Laravel 10 and Vue 3 app to match [this figma](https://www.f
 - In the exercise you are implementing a local API; however, you should code your submission as if you are using a production API
 
 
-## Links
+### Links
 - Figma Mock: https://www.figma.com/file/esJPcwZUGVjTq8D4svgAzC/Reference?type=design&node-id=0%3A1&mode=design&t=WHgnhnlnlIAKcAvl-1
 
-## Frontend Functional Requirements
+### Frontend Functional Requirements
 
 - Vue 3 and Typescript
 - SCSS and [BEM](https://getbem.com/introduction/)
-- A user should be able to search for properties ([See search endpoint details below](#searching-properties-endpoint)) by an address with Geoapify Autocomplete validation (Composable Provided)
+- A user should be able to search for properties ([See search endpoint details below](#searching-properties)) by an address with Geoapify Autocomplete validation (Composable Provided)
   - Search results should return in an endless scroll card list below the search input without having to reload the page
 - A user should be able to add and remove a property from their personal wish list ([See wishlist endpoints below](#wishlist-endpoints))
-  - Whether a user has wishlist-ed a property or not should display in the list of properties regardless of what search they show up in. 
+  - Whether a user has wishlist-ed a property or not should display in the list of properties regardless of what search they show up in.
 - A user should be able to view a list of properties that they have wish listed ([See wishlist endpoints below](#wishlist-endpoints))
 
-## API Functional Requirements
+### API Functional Requirements
 - Laravel 10
 - JSON API
 - MYSQL
 - Laravel Migrations
 
-### Searching properties
-- Route: `/api/v1/properties`
-- Method: GET
-- Function: Return a paginated list of properties within 20 miles of the requested search address 
+#### Searching properties
 
-### Wishlist Endpoints
+| Method | URL                  | Description                                                                           |
+|--------|----------------------|---------------------------------------------------------------------------------------|
+| `GET`  | `/api/v1/properties` | Return a paginated list of properties within 20 miles of the requested search address |
 
-- Route: `/api/v1/wishlists`
-- Method: GET
-- Function: Return a paginated list of properties the current session has added to their wishlist
+#### Wishlist Endpoints
 
-- Route: `/api/v1/wishlists`
-- Method: POST
-- Function: Add a property to the current sessions wishlist
+| Method   | URL                 | Description                                                                           |
+|----------|---------------------|---------------------------------------------------------------------------------------|
+| `GET`    | `/api/v1/wishlists` | Return a paginated list of properties the current session has added to their wishlist |
+| `POST`   | `/api/v1/wishlists` | Add a property to the current sessions wishlist                                       |
+| `DELETE` | `/api/v1/wishlists` | Remove a property from the current sessions wishlist                                  |
 
-- Route: `/api/v1/wishlists`
-- Method: DELETE
-- Function: Remove a property from the current sessions wishlist
-
-## Additional Considerations (if applicable)
+### Additional Considerations (if applicable)
 
 - Routing and views (e.g. navigating to the wish list from the site navigation)
 - The UI should be responsive and look great at different browser viewport sizes
 - State management with Pinia
-- [Component Tests](#run-component-tests-with-cypress-component-testing)
-- [Unit Tests](#run-tests-with-vue) and/or [Functional Tests](#run-tests-with-laravel)
+- Component Tests
+- Unit Tests and/or Functional Tests
 
 
 ## Evaluation
@@ -79,12 +95,9 @@ We will review your code for quality and your ability to talk through it, how yo
 
 ## How to submit the project
 
-You have up to a week to complete the exercise, but we don't expect you to spend more than a few hours on it.
+You have up to a week to complete the exercise, but we don't want you to spend more than 2 hours on it.
 
-When it's ready, please add the following emails to the source code in a GitHub repository and send us an email letting us know it is finished.
-- eric@appliedimagination.com
-- devin@appliedimagination.com
-
+When it's ready or the time has elapsed, please email a zip file of the source code to your recruiter.
 
 ## Project Setup
 
@@ -105,7 +118,7 @@ If you choose to run a custom server it must meet the following requirements:
 - Node 20
 - PHP 8.1
 
-## External Service 
+## External Service
 
 In order to make this project work you will need to signup for a couple free services. You will store the API keys from these services in your `.env` file.
 
@@ -113,14 +126,14 @@ In order to make this project work you will need to signup for a couple free ser
 
 This service will be utilized for address autocomplete. In the project we provide a composable function to use for creating the address autocomplete input. Use the following steps to get an API key
 - Signup for a free account [here](https://myprojects.geoapify.com/register)
-- Click the create project button 
+- Click the create project button
 - Copy the API key and paste it into the `VITE_GEOAPIFY_API_KEY` value in the project `.env`
 
 ### Datafiniti
 
-This service will be utilized for pulling property data. In order to complete this project you will need to read through the [API Documentation](https://developer.datafiniti.co/reference/products) and [Guides](https://developer.datafiniti.co/docs/constructing-property-queries#geo-queries) to complete the functional requirements define in [API Functional Requirements](#api-functional-requirements)
+This service will be utilized for pulling property data. In order to complete this project you will need to read through the [API Documentation](https://developer.datafiniti.co/reference/products) and [Guides](https://developer.datafiniti.co/docs/constructing-property-queries#geo-queries) (HINT: You'll need to read both linked documentation to complete the test) to complete the functional requirements define in [API Functional Requirements](#api-functional-requirements)
 
-##### Signuing up 
+##### Signing up
 - Signup for a free account [here](https://portal.datafiniti.co/sign-up)
 - Click setting in the left navigation
 - Copy the token and store it in the project `.env`

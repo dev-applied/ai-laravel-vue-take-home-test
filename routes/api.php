@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\PropertyController;
+use App\Http\Controllers\Api\V1\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => '/v1'], function () {
+    Route::apiResource('properties',PropertyController::class)->only('index');
+    Route::apiResource('wishlist', WishlistController::class)->except('update');
+});
+
+Route::fallback(function () {
+    abort(404, 'Route Not Found: ' . request()->path());
 });

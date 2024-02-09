@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'datafinity' => [
+        'secret' => env('DATAFINITY_API_KEY')
+    ]
+
 ];
